@@ -3,12 +3,12 @@
   import ReadonlyMethod from "./ReadonlyMethod.svelte";
   import type { Contract } from "$lib/contract";
 
-    export let contract: Contract;
-    export let methods: AbiItem[];
+  export let contract: Contract;
+  export let methods: AbiItem[];
 </script>
 
 <div>
-    {#each methods as method}
-        <ReadonlyMethod {contract} {method} />
-    {/each}
+  {#each methods as method}
+    <ReadonlyMethod {contract} {method} />
+  {/each}
 </div>

@@ -8,8 +8,8 @@ const web3 = new Web3("https://bsc-dataseed1.binance.org:443");
 export class Contract {
   private initialized = false;
 
-  private rawContract: RawContract|null = null;
-  private abi: AbiItem[]|null = null;
+  private rawContract: RawContract | null = null;
+  private abi: AbiItem[] | null = null;
 
   constructor(private address: string, private provider: ApiProvider) {}
 

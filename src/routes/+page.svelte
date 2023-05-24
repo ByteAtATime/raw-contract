@@ -5,19 +5,19 @@
   import { onMount } from "svelte";
   import type { AbiItem } from "web3-utils";
 
-    const contract = new Contract("0xeaf770a86002472230c66035e83fc10af92c9f24", new BscScanApi(""));
+  const contract = new Contract("0xeaf770a86002472230c66035e83fc10af92c9f24", new BscScanApi(""));
 
-    let readonlyMethods: AbiItem[] | null = null;
+  let readonlyMethods: AbiItem[] | null = null;
 
-    onMount(async () => {
-        await contract.init();
+  onMount(async () => {
+    await contract.init();
 
-        readonlyMethods = await contract.getReadonlyMethods();
-    })
+    readonlyMethods = await contract.getReadonlyMethods();
+  });
 </script>
 
 {#if readonlyMethods}
-    <ReadonlyMethodsList {contract} methods={readonlyMethods} />
+  <ReadonlyMethodsList {contract} methods={readonlyMethods} />
 {:else}
-    <p>Loading...</p>
+  <p>Loading...</p>
 {/if}
