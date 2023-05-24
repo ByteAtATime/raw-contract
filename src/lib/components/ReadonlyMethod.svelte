@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { Contract } from "$lib/contract";
-  import { TYPE_TO_NAME, TYPE_TO_PATTERN } from "$lib/solidity";
   import type { AbiItem } from "web3-utils";
   import MethodInput from "./MethodInput.svelte";
 
