@@ -15,6 +15,6 @@ export class BscScanApi implements ApiProvider {
     const response = await fetch(url);
     const json = await response.json();
 
-    return json.result;
+    return JSON.parse(json.result);
   }
 }
