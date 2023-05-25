@@ -20,7 +20,7 @@ export class Contract {
   private rawContract: RawContract | null = null;
   private abi: AbiItem[] | null = null;
 
-  constructor(private address: string, private provider: ApiProvider) {}
+  constructor(public readonly address: string, private provider: ApiProvider) {}
 
   public async init(contractProvider: RawContractProvider) {
     this.abi = await this.provider.getAbi(this.address);

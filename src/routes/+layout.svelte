@@ -3,6 +3,7 @@
 
   import { navigating } from "$app/stores";
   import { Circle2 } from "svelte-loading-spinners";
+  import { Modal } from "svelte-simple-modal";
 </script>
 
 {#if $navigating}
@@ -10,5 +11,7 @@
     <Circle2 />
   </div>
 {:else}
-  <slot />
+  <Modal>
+    <slot />
+  </Modal>
 {/if}
