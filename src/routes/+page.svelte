@@ -2,6 +2,7 @@
   import { BscScanApi } from "$lib/api";
   import ReadonlyMethodsList from "$lib/components/ReadonlyMethodsList.svelte";
   import { Contract } from "$lib/contract";
+  import Web3 from "web3";
   import type { AbiItem } from "web3-utils";
 
   let contract: Contract | null = null;
@@ -14,7 +15,7 @@
     loading = true;
 
     contract = new Contract(address, new BscScanApi(""));
-    await contract.init();
+    await contract.init(new Web3("https://bsc-dataseed.binance.org/").eth.Contract);
 
     readonlyMethods = await contract.getReadonlyMethods();
 
@@ -22,13 +23,12 @@
   };
 </script>
 
-<div class="flex gap-x-4 justify-center mb-8 mt-2">
+<form class="flex gap-x-4 justify-center mb-8 mt-2" on:submit|preventDefault={updateAddress}>
   <input type="text" bind:value={address} class="text-lg px-3 py-2 border rounded-xl font-mono" />
   <button
-    on:click={updateAddress}
-    class="text-lg rounded-xl px-3 py-2 bg-green-200 font-semibold tracking-wide">Update</button
+    class="text-lg rounded-xl px-3 py-2 bg-green-200 font-semibold tracking-wide">Load</button
   >
-</div>
+</form>
 
 {#if contract && readonlyMethods}
   <ReadonlyMethodsList {contract} methods={readonlyMethods} />
