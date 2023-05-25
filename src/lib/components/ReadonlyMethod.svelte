@@ -13,9 +13,17 @@
   const data = Array(inputs.length).fill("");
 
   let result: any | null = null;
+  let error: string | null = null;
 
   const execute = async () => {
-    result = await contract.readMethod(method, ...data);
+    result = null;
+    error = null;
+
+    try {
+      result = await contract.readMethod(method, ...data);
+    } catch (e: any) {
+      error = e.message;
+    }
   };
 </script>
 
@@ -46,6 +54,10 @@
 
     {#if result}
       <p class="font-mono mt-2">{result}</p>
+    {/if}
+
+    {#if error}
+      <p class="font-mono mt-2 text-red-600">{error}</p>
     {/if}
   {/if}
 </details>
