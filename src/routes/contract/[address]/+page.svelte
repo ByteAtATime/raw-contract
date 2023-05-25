@@ -1,6 +1,7 @@
 <script lang="ts">
   import Fa from "svelte-fa";
-  import { faPencil } from "@fortawesome/free-solid-svg-icons"
+  import { faPencil, faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons"
+  import { faStar as faStarOutline } from "@fortawesome/free-regular-svg-icons"
   import ReadonlyMethodsList from "$lib/components/ReadonlyMethodsList.svelte";
   import Searchbar from "$lib/components/Searchbar.svelte";
   import type { Contract } from "$lib/contract";
@@ -8,7 +9,7 @@
   import { getContext } from "svelte";
   import type { Open } from "svelte-simple-modal"
   import RenameContract from "$lib/components/modals/RenameContract.svelte";
-  import { getContractName } from "$lib/storage";
+  import { getContractName, isFavorite, toggleFavorite } from "$lib/storage";
 
   export let data: { contract: Contract; readonlyMethods: AbiItem[] };
 
@@ -19,6 +20,13 @@
   const rename = () => {
     open(RenameContract, { address: contract.address })
   }
+
+  const changeFavorite = () => {
+    toggleFavorite(contract.address);
+    favorite = !favorite;
+  }
+
+  let favorite = isFavorite(contract.address);
 </script>
 
 <Searchbar />
@@ -27,8 +35,9 @@
   Contract <span class="font-mono ml-1 tracking-wide">{getContractName(contract.address)}</span>
 </h1>
 
-<div class="flex mb-4">
+<div class="flex mb-4 gap-x-2">
   <button class="bg-green-200 p-2 rounded-lg" on:click={rename}><Fa icon={faPencil} size="lg" /></button>
+  <button class="bg-green-200 p-2 rounded-lg" on:click={changeFavorite}><Fa icon={favorite ? faStarSolid : faStarOutline} size="lg" /></button>
 </div>
 
 <ReadonlyMethodsList {contract} methods={readonlyMethods} />
