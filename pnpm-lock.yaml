@@ -21,6 +21,9 @@ devDependencies:
   '@byteatatime/prettier-config':
     specifier: ^0.1.0
     version: 0.1.0(prettier@2.8.8)
+  '@fortawesome/free-solid-svg-icons':
+    specifier: ^6.4.0
+    version: 6.4.0
   '@sveltejs/adapter-auto':
     specifier: ^2.1.0
     version: 2.1.0(@sveltejs/kit@1.18.0)
@@ -66,6 +69,12 @@ devDependencies:
   svelte-check:
     specifier: ^3.3.2
     version: 3.3.2(@babel/core@7.14.0)(postcss@8.4.23)(svelte@3.59.1)
+  svelte-fa:
+    specifier: ^3.0.3
+    version: 3.0.3
+  svelte-loading-spinners:
+    specifier: ^0.3.4
+    version: 0.3.4
   tailwindcss:
     specifier: ^3.3.2
     version: 3.3.2
@@ -1636,6 +1645,20 @@ packages:
       '@ethersproject/properties': 5.7.0
       '@ethersproject/strings': 5.7.0
     dev: false
+
+  /@fortawesome/fontawesome-common-types@6.4.0:
+    resolution: {integrity: sha512-HNii132xfomg5QVZw0HwXXpN22s7VBHQBv9CeOu9tfJnhsWQNd2lmTNi8CSrnw5B+5YOmzu1UoPAyxaXsJ6RgQ==}
+    engines: {node: '>=6'}
+    requiresBuild: true
+    dev: true
+
+  /@fortawesome/free-solid-svg-icons@6.4.0:
+    resolution: {integrity: sha512-kutPeRGWm8V5dltFP1zGjQOEAzaLZj4StdQhWVZnfGFCvAPVvHh8qk5bRrU4KXnRRRNni5tKQI9PBAdI6MP8nQ==}
+    engines: {node: '>=6'}
+    requiresBuild: true
+    dependencies:
+      '@fortawesome/fontawesome-common-types': 6.4.0
+    dev: true
 
   /@istanbuljs/load-nyc-config@1.1.0:
     resolution: {integrity: sha512-VjeHSlIzpv/NyD3N0YuHfXOPDIixcA1q2ZV98wsMqcYlPmv2n3Yb2lYP9XMElnaFVXg5A7YLTeLu6V84uQDjmQ==}
@@ -5928,6 +5951,10 @@ packages:
       - sugarss
     dev: true
 
+  /svelte-fa@3.0.3:
+    resolution: {integrity: sha512-GIikJjcVCD+5Y/x9hZc2R4gvuA0gVftacuWu1a+zVQWSFjFYZ+hhU825x+QNs2slsppfrgmFiUyU9Sz9gj4Rdw==}
+    dev: true
+
   /svelte-hmr@0.15.1(svelte@3.59.1):
     resolution: {integrity: sha512-BiKB4RZ8YSwRKCNVdNxK/GfY+r4Kjgp9jCLEy0DuqAKfmQtpL38cQK3afdpjw4sqSs4PLi3jIPJIFp259NkZtA==}
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
@@ -5935,6 +5962,10 @@ packages:
       svelte: '>=3.19.0'
     dependencies:
       svelte: 3.59.1
+    dev: true
+
+  /svelte-loading-spinners@0.3.4:
+    resolution: {integrity: sha512-vKaW71QMCBcTNijAGc0mUl8k3DQ66iYmp6MB8BMGCXyWk82bTrcLy8FOnSm9fE+8q6TwzD6PLUoYFHt0II93Xw==}
     dev: true
 
   /svelte-preprocess@5.0.3(@babel/core@7.14.0)(postcss@8.4.23)(svelte@3.59.1)(typescript@5.0.4):

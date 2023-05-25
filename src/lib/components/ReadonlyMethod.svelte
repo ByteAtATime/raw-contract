@@ -59,10 +59,8 @@
             {#if outputs.find((it) => it.name === key)?.type === "address"}
               <p class="font-mono mt-2">
                 {key}:
-                <a
-                  href="https://bscscan.com/address/{value}"
-                  target="_blank"
-                  class="text-blue-600">{value}</a
+                <a href="https://bscscan.com/address/{value}" target="_blank" class="text-blue-600"
+                  >{value}</a
                 >
               </p>
             {:else}
