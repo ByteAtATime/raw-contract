@@ -53,7 +53,26 @@
     >
 
     {#if result}
-      <p class="font-mono mt-2">{result}</p>
+      {#if typeof result === "object"}
+        {#each Object.entries(result) as [key, value]}
+          {#if !/^\d+$/.test(key)}
+            {#if outputs.find((it) => it.name === key)?.type === "address"}
+              <p class="font-mono mt-2">
+                {key}:
+                <a
+                  href="https://bscscan.com/address/{value}"
+                  target="_blank"
+                  class="text-blue-600">{value}</a
+                >
+              </p>
+            {:else}
+              <p class="font-mono mt-2">{key}: {value}</p>
+            {/if}
+          {/if}
+        {/each}
+      {:else}
+        <p class="font-mono mt-2">{result}</p>
+      {/if}
     {/if}
 
     {#if error}

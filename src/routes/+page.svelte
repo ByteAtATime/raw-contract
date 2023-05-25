@@ -25,8 +25,7 @@
 
 <form class="flex gap-x-4 justify-center mb-8 mt-2" on:submit|preventDefault={updateAddress}>
   <input type="text" bind:value={address} class="text-lg px-3 py-2 border rounded-xl font-mono" />
-  <button
-    class="text-lg rounded-xl px-3 py-2 bg-green-200 font-semibold tracking-wide">Load</button
+  <button class="text-lg rounded-xl px-3 py-2 bg-green-200 font-semibold tracking-wide">Load</button
   >
 </form>
 
