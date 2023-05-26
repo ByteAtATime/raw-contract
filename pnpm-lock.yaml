@@ -66,6 +66,9 @@ devDependencies:
   prettier-plugin-svelte:
     specifier: ^2.10.0
     version: 2.10.0(prettier@2.8.8)(svelte@3.59.1)
+  rippleui:
+    specifier: ^1.12.1
+    version: 1.12.1
   svelte:
     specifier: ^3.59.1
     version: 3.59.1
@@ -2223,6 +2226,12 @@ packages:
     dependencies:
       '@types/node': 20.2.3
     dev: false
+
+  /@types/postcss-js@4.0.1:
+    resolution: {integrity: sha512-B4EWDvQbB1MfvVxAgdshFcRwm/JVAc1UxziOlgek+Fl0IOeVNIiB7/mCXtJBVzkgHe5rE8G/yZ5j7IUf/1dlFA==}
+    dependencies:
+      postcss: 8.4.23
+    dev: true
 
   /@types/prettier@2.7.2:
     resolution: {integrity: sha512-KufADq8uQqo1pYKVIYzfKbJfBAc0sOeXqGbFaSpv8MRmC/zXgowNZmFcbngndGk922QDmOASEXUZCaY48gs4cg==}
@@ -5560,6 +5569,17 @@ packages:
       hash-base: 3.1.0
       inherits: 2.0.4
     dev: false
+
+  /rippleui@1.12.1:
+    resolution: {integrity: sha512-2LLqGQy0Gb+V/XHC+Ucx7rKcgisTr1HBevVc+NiwTiJn4y38Ya1cad8I/ZZHfWbrvKG/bPKYh+XJCM8M4cUs0A==}
+    dependencies:
+      '@types/postcss-js': 4.0.1
+      postcss: 8.4.23
+      postcss-js: 4.0.1(postcss@8.4.23)
+      tailwindcss: 3.3.2
+    transitivePeerDependencies:
+      - ts-node
+    dev: true
 
   /rlp@2.2.7:
     resolution: {integrity: sha512-d5gdPmgQ0Z+AklL2NVXr/IoSjNZFfTVvQWzL/AM2AOcSzYP2xjlb0AC8YyCLc41MSNf6P6QVtjgPdmVtzb+4lQ==}

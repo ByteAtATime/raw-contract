@@ -27,54 +27,60 @@
   };
 </script>
 
-<details class="bg-teal-100/50 rounded-lg p-4 mb-4">
-  <summary class="font-mono">{method.name}</summary>
-
-  {#if constant}
-    {#await contract.readMethod(method) then result}
-      {#if outputs[0].type === "address"}
-        <a
-          href="https://bscscan.com/address/{result}"
-          target="_blank"
-          class="font-mono text-blue-600">{result}</a
-        >
-      {:else}
-        <p class="font-mono">{result}</p>
-      {/if}
-    {/await}
-  {:else}
-    {#each inputs as input, i}
-      <MethodInput {input} bind:data={data[i]} />
-    {/each}
-
-    <button
-      on:click={execute}
-      class="bg-green-200 px-3 py-2 rounded-lg mt-4 font-semibold tracking-wide">Execute</button
-    >
-
-    {#if result}
-      {#if typeof result === "object"}
-        {#each Object.entries(result) as [key, value]}
-          {#if !/^\d+$/.test(key)}
-            {#if outputs.find((it) => it.name === key)?.type === "address"}
-              <p class="font-mono mt-2">
-                {key}:
-                <a href="https://bscscan.com/address/{value}" target="_blank" class="text-blue-600"
-                  >{value}</a
-                >
-              </p>
-            {:else}
-              <p class="font-mono mt-2">{key}: {value}</p>
-            {/if}
+<div class="accordion">
+  <input type="checkbox" id="accordion-{method.name}" class="accordion-toggle" />
+  <label for="accordion-{method.name}" class="accordion-title font-mono">{method.name}</label>
+  <div class="accordion-content">
+    <div class="min-h-0">
+      {#if constant}
+        {#await contract.readMethod(method) then result}
+          {#if outputs[0].type === "address"}
+            <a
+              href="https://bscscan.com/address/{result}"
+              target="_blank"
+              class="font-mono text-blue-600">{result}</a
+            >
+          {:else}
+            <p class="font-mono">{result}</p>
           {/if}
-        {/each}
+        {/await}
       {:else}
-        <p class="font-mono mt-2">{result}</p>
-      {/if}
-    {/if}
+        {#each inputs as input, i}
+          <MethodInput {input} bind:data={data[i]} />
+        {/each}
 
-    {#if error}
-      <p class="font-mono mt-2 text-red-600">{error}</p>
-    {/if}
-  {/if}
-</details>
+        <button
+          on:click={execute}
+          class="btn btn-primary mt-2">Execute</button
+        >
+
+        {#if result}
+          {#if typeof result === "object"}
+            {#each Object.entries(result) as [key, value]}
+              {#if !/^\d+$/.test(key)}
+                {#if outputs.find((it) => it.name === key)?.type === "address"}
+                  <p class="font-mono mt-2">
+                    {key}:
+                    <a
+                      href="https://bscscan.com/address/{value}"
+                      target="_blank"
+                      class="text-blue-600">{value}</a
+                    >
+                  </p>
+                {:else}
+                  <p class="font-mono mt-2">{key}: {value}</p>
+                {/if}
+              {/if}
+            {/each}
+          {:else}
+            <p class="font-mono mt-2">{result}</p>
+          {/if}
+        {/if}
+
+        {#if error}
+          <p class="font-mono mt-2 text-red-600">{error}</p>
+        {/if}
+      {/if}
+    </div>
+  </div>
+</div>

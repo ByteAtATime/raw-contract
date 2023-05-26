@@ -11,13 +11,13 @@
 
   <input
     type="text"
-    class="ml-2 border border-gray-300 rounded-md p-1"
+    class="ml-2 input input-ghost-secondary"
     placeholder={input.type === "address" ? "0x..." : ""}
     bind:value={data}
     pattern={TYPE_TO_PATTERN[input.type]}
   />
 
   {#if !new RegExp(TYPE_TO_PATTERN[input.type]).test(data)}
-    <p class="text-red-600 ml-2">Invalid input</p>
+    <p class="text-error ml-2">Invalid input</p>
   {/if}
 </div>

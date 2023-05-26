@@ -12,7 +12,7 @@ export const getContractName = (address: string): string => {
 
   const names = JSON.parse(localStorage.getItem("contractNames") || "{}");
   return names[address] ?? address;
-}
+};
 
 export const toggleFavorite = (address: string) => {
   if (typeof window === "undefined") return;
@@ -27,17 +27,17 @@ export const toggleFavorite = (address: string) => {
   }
 
   localStorage.setItem("favorites", JSON.stringify(favorites));
-}
+};
 
 export const isFavorite = (address: string): boolean => {
   if (typeof window === "undefined") return false;
 
   const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
   return favorites.includes(address);
-}
+};
 
 export const getFavorites = (): string[] => {
   if (typeof window === "undefined") return [];
 
   return JSON.parse(localStorage.getItem("favorites") || "[]");
-}
+};
