@@ -10,6 +10,7 @@
   import type { Open } from "svelte-simple-modal";
   import RenameContract from "$lib/components/modals/RenameContract.svelte";
   import { getContractName, isFavorite, toggleFavorite } from "$lib/storage";
+  import { CHAIN_TO_NAME } from "$lib/api";
 
   export let data: { contract: Contract; readonlyMethods: AbiItem[], chain: string };
 
@@ -22,17 +23,11 @@
   };
 
   const changeFavorite = () => {
-    toggleFavorite(contract.address);
+    toggleFavorite(contract.address, chain);
     favorite = !favorite;
   };
 
-  let favorite = isFavorite(contract.address);
-
-  const CHAIN_TO_NAME: Record<string, string> = {
-    "bsc": "Binance Smart Chain Mainnet",
-    "eth": "Ethereum Mainnet",
-    "matic": "Polygon Mainnet",
-  };
+  let favorite = isFavorite(contract.address, chain);
 </script>
 
 <Searchbar />

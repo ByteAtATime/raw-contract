@@ -22,7 +22,7 @@
 
   <div class="flex flex-col gap-y-3 mt-2 w-1/2">
     {#each favorites as favorite}
-      <a href="/contract/{favorite}" class="btn btn-secondary">{getContractName(favorite)}</a>
+      <a href="/contract/{favorite[0]}?chain={favorite[1]}" class="btn btn-secondary">{getContractName(favorite)}</a>
     {/each}
   </div>
 </div>

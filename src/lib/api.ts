@@ -15,6 +15,10 @@ abstract class ScanApi implements ApiProvider {
     const response = await fetch(url);
     const json = await response.json();
 
+    if (json.result === "Contract source code not verified") {
+      throw new Error("Contract source code not verified");
+    };
+
     return JSON.parse(json.result);
   }
 }
@@ -35,4 +39,16 @@ export const CHAIN_TO_API: Record<string, new (...args: any[]) => ApiProvider> =
   bsc: BscScanApi,
   eth: EtherScanApi,
   polygon: PolygonScanApi,
+};
+
+export const CHAIN_TO_RPC_URL: Record<string, string> = {
+  bsc: "https://bsc-dataseed.binance.org/",
+  eth: "https://eth.llamarpc.com",
+  polygon: "https://polygon-rpc.com/",
+};
+
+export const CHAIN_TO_NAME: Record<string, string> = {
+  "bsc": "Binance Smart Chain Mainnet",
+  "eth": "Ethereum Mainnet",
+  "matic": "Polygon Mainnet",
 };

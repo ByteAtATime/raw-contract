@@ -14,14 +14,14 @@ export const getContractName = (address: string): string => {
   return names[address] ?? address;
 };
 
-export const toggleFavorite = (address: string) => {
+export const toggleFavorite = (address: string, chain: string) => {
   if (typeof window === "undefined") return;
 
   const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
-  const index = favorites.indexOf(address);
+  const index = favorites.indexOf(JSON.stringify([address, chain]));
 
   if (index === -1) {
-    favorites.push(address);
+    favorites.push(JSON.stringify([address, chain]));
   } else {
     favorites.splice(index, 1);
   }
@@ -29,11 +29,11 @@ export const toggleFavorite = (address: string) => {
   localStorage.setItem("favorites", JSON.stringify(favorites));
 };
 
-export const isFavorite = (address: string): boolean => {
+export const isFavorite = (address: string, chain: string): boolean => {
   if (typeof window === "undefined") return false;
 
   const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
-  return favorites.includes(address);
+  return favorites.includes(JSON.stringify([address, chain]));
 };
 
 export const getFavorites = (): string[] => {
