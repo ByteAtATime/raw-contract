@@ -54,7 +54,7 @@
           class="btn btn-primary mt-2">Execute</button
         >
 
-        {#if result}
+        {#if result != null}
           {#if typeof result === "object"}
             {#each Object.entries(result) as [key, value]}
               {#if !/^\d+$/.test(key)}

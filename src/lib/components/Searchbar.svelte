@@ -1,12 +1,13 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
+  import { getDefaultChain } from "$lib/storage";
 
   let address = "";
 
   const submit = () => {
     if (!valid) return;
 
-    goto(`/contract/${address}`);
+    goto(`/contract/${address}?chain=${getDefaultChain()}`);
   };
 
   $: valid = /^0x[0-9a-fA-F]{40}$/.test(address);

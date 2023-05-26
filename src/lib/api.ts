@@ -4,8 +4,8 @@ export interface ApiProvider {
   getAbi(address: string): Promise<AbiItem[]>;
 }
 
-export class BscScanApi implements ApiProvider {
-  private readonly baseUrl = "https://api.bscscan.com/api";
+abstract class ScanApi implements ApiProvider {
+  abstract baseUrl: string;
 
   constructor(private readonly apiKey: string) {}
 
@@ -18,3 +18,21 @@ export class BscScanApi implements ApiProvider {
     return JSON.parse(json.result);
   }
 }
+
+export class BscScanApi extends ScanApi {
+  baseUrl = "https://api.bscscan.com/api";
+}
+
+export class EtherScanApi extends ScanApi {
+  baseUrl = "https://api.etherscan.io/api";
+}
+
+export class PolygonScanApi extends ScanApi {
+  baseUrl = "https://api.polygonscan.com/api";
+}
+
+export const CHAIN_TO_API: Record<string, new (...args: any[]) => ApiProvider> = {
+  bsc: BscScanApi,
+  eth: EtherScanApi,
+  polygon: PolygonScanApi,
+};
