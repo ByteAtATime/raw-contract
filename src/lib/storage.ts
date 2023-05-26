@@ -46,11 +46,10 @@ export const setDefaultChain = (chain: string) => {
   if (typeof window === "undefined") return;
 
   localStorage.setItem("defaultChain", chain);
-}
+};
 
 export const getDefaultChain = (): string => {
   if (typeof window === "undefined") return "bsc";
 
   return localStorage.getItem("defaultChain") || "bsc";
-}
-
+};

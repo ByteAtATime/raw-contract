@@ -17,7 +17,11 @@ abstract class ScanApi implements ApiProvider {
 
     if (json.result === "Contract source code not verified") {
       throw new Error("Contract source code not verified");
-    };
+    }
+
+    if (json.result === "Max rate limit reached, please use API Key for higher rate limit") {
+      throw new Error("Max rate limit reached, please use API Key for higher rate limit");
+    }
 
     return JSON.parse(json.result);
   }
@@ -48,7 +52,7 @@ export const CHAIN_TO_RPC_URL: Record<string, string> = {
 };
 
 export const CHAIN_TO_NAME: Record<string, string> = {
-  "bsc": "Binance Smart Chain Mainnet",
-  "eth": "Ethereum Mainnet",
-  "matic": "Polygon Mainnet",
+  bsc: "Binance Smart Chain Mainnet",
+  eth: "Ethereum Mainnet",
+  matic: "Polygon Mainnet",
 };

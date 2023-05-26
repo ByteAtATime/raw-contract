@@ -12,7 +12,7 @@
   import { getContractName, isFavorite, toggleFavorite } from "$lib/storage";
   import { CHAIN_TO_NAME } from "$lib/api";
 
-  export let data: { contract: Contract; readonlyMethods: AbiItem[], chain: string };
+  export let data: { contract: Contract; readonlyMethods: AbiItem[]; chain: string };
 
   const { contract, readonlyMethods, chain } = data;
 
@@ -33,7 +33,9 @@
 <Searchbar />
 
 <h1 class="text-3xl font-bold">
-  Contract <span class="font-mono ml-1 tracking-wide">{getContractName(contract.address)}</span> on {CHAIN_TO_NAME[chain]}
+  Contract <span class="font-mono ml-1 tracking-wide">{getContractName(contract.address)}</span> on {CHAIN_TO_NAME[
+    chain
+  ]}
 </h1>
 
 <div class="flex mb-4 gap-x-2">

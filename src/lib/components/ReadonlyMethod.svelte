@@ -49,10 +49,7 @@
           <MethodInput {input} bind:data={data[i]} />
         {/each}
 
-        <button
-          on:click={execute}
-          class="btn btn-primary mt-2">Execute</button
-        >
+        <button on:click={execute} class="btn btn-primary mt-2">Execute</button>
 
         {#if result != null}
           {#if typeof result === "object"}

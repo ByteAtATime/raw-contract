@@ -16,10 +16,7 @@
 <form class="flex gap-x-4 justify-center my-4 items-start" on:submit|preventDefault={submit}>
   <div class="flex flex-col items-center">
     <input type="text" bind:value={address} class="input input-ghost-primary" placeholder="0x..." />
-    <p
-      class="text-error mt-2 text-center"
-      class:hidden={valid || address.length === 0}
-    >
+    <p class="text-error mt-2 text-center" class:hidden={valid || address.length === 0}>
       Invalid address!
     </p>
   </div>

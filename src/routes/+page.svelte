@@ -10,7 +10,11 @@
 <Searchbar />
 
 <div class="flex justify-center">
-  <select class="select select-ghost-secondary" bind:value={chain} on:change={() => setDefaultChain(chain)}>
+  <select
+    class="select select-ghost-secondary"
+    bind:value={chain}
+    on:change={() => setDefaultChain(chain)}
+  >
     <option value="bsc">Binance Smart Chain</option>
     <option value="eth">Ethereum</option>
     <option value="matic">Polygon</option>
@@ -22,7 +26,9 @@
 
   <div class="flex flex-col gap-y-3 mt-2 w-1/2">
     {#each favorites as favorite}
-      <a href="/contract/{favorite[0]}?chain={favorite[1]}" class="btn btn-secondary">{getContractName(favorite)}</a>
+      <a href="/contract/{favorite[0]}?chain={favorite[1]}" class="btn btn-secondary"
+        >{getContractName(favorite)}</a
+      >
     {/each}
   </div>
 </div>

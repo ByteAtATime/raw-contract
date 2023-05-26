@@ -10,7 +10,9 @@ export const load: PageLoad = async ({ params, url }) => {
   const contract = new Contract(params.address, new api(""));
 
   try {
-    await contract.init(new Web3(CHAIN_TO_RPC_URL[chain] ?? "https://bsc-dataseed.binance.org/").eth.Contract);
+    await contract.init(
+      new Web3(CHAIN_TO_RPC_URL[chain] ?? "https://bsc-dataseed.binance.org/").eth.Contract,
+    );
   } catch (e: any) {
     throw error(404, {
       message: e.message,
